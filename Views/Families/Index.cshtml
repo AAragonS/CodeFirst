@@ -1,0 +1,42 @@
+﻿@model IEnumerable<CodeFirst.Models.Family>
+
+@{
+    ViewBag.Title = "Lista";
+}
+
+<h2>Lista de familias</h2>
+
+<p>
+    @Html.ActionLink("Registrar nuevo", "Create")
+</p>
+<table class="table table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MLastName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FamilyID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MLastName)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.FamilyID }) |
+            @Html.ActionLink("Detalles", "Details", new { id=item.FamilyID }) |
+            @Html.ActionLink("Borrar", "Delete", new { id=item.FamilyID })
+        </td>
+    </tr>
+}
+
+</table>
